@@ -1,0 +1,8 @@
+{
+  "statusCode": 200,
+  "status": "Success",
+  "message": "OK",
+  "responseData": {
+    "message": "123456789"
+  }
+}

@@ -1,4 +1,4 @@
-package com.datdang.projectbase.ui.base
+package com.datdang.projectbase.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
