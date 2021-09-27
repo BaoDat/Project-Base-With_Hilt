@@ -10,10 +10,12 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.kotlin.addTo
 import io.reactivex.rxjava3.subjects.BehaviorSubject
+import io.reactivex.rxjava3.subjects.PublishSubject
 
 abstract class BaseViewModel(app: Application) : AndroidViewModel(app) {
 
     protected val _error = BehaviorSubject.create<Throwable>()
+    protected val _navigator = PublishSubject.create<NavigationEvent>()
 
     private val disposables by lazy { CompositeDisposable() }
 
@@ -24,6 +26,9 @@ abstract class BaseViewModel(app: Application) : AndroidViewModel(app) {
 
     val error: Observable<Throwable>
         get() = _error
+
+    val navigator: Observable<NavigationEvent>
+        get() = _navigator
 
     val showLoading = MutableLiveData(false)
 

@@ -5,21 +5,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.datdang.projectbase.R
 import com.datdang.projectbase.base.BaseViewModel
-import com.datdang.projectbase.ui.login.navigation.LoginNavigationEvent
+import com.datdang.projectbase.base.NavigationEvent
 import com.datdang.projectbase.utils.LiveEvent
 import com.datdang.projectbase.utils.Validator
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.subjects.PublishSubject
 import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     val app: Application
 ) : BaseViewModel(app){
-
-    private val navigationSubject = PublishSubject.create<LoginNavigationEvent>()
-    val navigator: Observable<LoginNavigationEvent> = navigationSubject.hide()
 
     val isShowEmailAddressError: MutableLiveData<Boolean> = MutableLiveData(false)
     val isShowPasswordError: MutableLiveData<Boolean> = MutableLiveData(false)
@@ -35,7 +30,7 @@ class LoginViewModel @Inject constructor(
     fun onLoginClick() {
         _hideKeyboard.trigger()
         if (validate()) {
-            navigationSubject.onNext(LoginNavigationEvent.NavigateMain)
+            _navigator.onNext(NavigationEvent.Main)
         }
     }
 
@@ -79,5 +74,13 @@ class LoginViewModel @Inject constructor(
     private fun showEmailError(error: String) {
         emailError.value = error
         isShowEmailAddressError.value = true
+    }
+
+    fun onCreateAccountClick() {
+        _navigator.onNext(NavigationEvent.CreateAccount)
+    }
+
+    fun onForgotPasswordClick() {
+        _navigator.onNext(NavigationEvent.ForgotPassword)
     }
 }

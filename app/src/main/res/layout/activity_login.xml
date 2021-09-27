@@ -1,129 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:bind="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.login.LoginActivity">
 
-    <data>
-
-        <variable
-            name="viewModel"
-            type="com.datdang.projectbase.ui.login.vm.LoginViewModel" />
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.login.LoginFragment">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/double_full_padding"
-            android:layout_marginEnd="@dimen/double_full_padding"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/iv_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@null"
-                android:src="@mipmap/ic_launcher"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <EditText
-                android:id="@+id/et_email_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/double_full_padding"
-                android:layout_marginTop="@dimen/double_full_padding"
-                android:layout_marginEnd="@dimen/double_full_padding"
-                android:autofillHints="@null"
-                android:hint="@string/email_address"
-                android:inputType="textEmailAddress"
-                android:text="@={viewModel.email}"
-                app:layout_constraintTop_toBottomOf="@+id/iv_icon" />
-
-            <TextView
-                android:id="@+id/tv_email_address_error"
-                style="@style/ErrorTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/double_full_padding"
-                android:layout_marginEnd="@dimen/double_full_padding"
-                android:paddingStart="@dimen/half_padding"
-                android:paddingEnd="@dimen/half_padding"
-                android:text="@{viewModel.emailError}"
-                app:layout_constraintTop_toBottomOf="@+id/et_email_address"
-                app:visible="@{viewModel.isShowEmailAddressError}" />
-
-            <EditText
-                android:id="@+id/et_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/double_full_padding"
-                android:layout_marginTop="@dimen/full_padding"
-                android:layout_marginEnd="@dimen/double_full_padding"
-                android:autofillHints="@null"
-                android:hint="@string/password"
-                android:inputType="textPassword"
-                android:text="@={viewModel.password}"
-                app:layout_constraintTop_toBottomOf="@+id/et_email_address" />
-
-            <TextView
-                android:id="@+id/tv_password_error"
-                style="@style/ErrorTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/double_full_padding"
-                android:layout_marginEnd="@dimen/double_full_padding"
-                android:paddingStart="@dimen/half_padding"
-                android:paddingEnd="@dimen/half_padding"
-                android:text="@{viewModel.passwordError}"
-                app:layout_constraintTop_toBottomOf="@+id/et_password"
-                app:visible="@{viewModel.isShowPasswordError}" />
-
-            <Button
-                android:id="@+id/btn_login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/double_full_padding"
-                android:text="@string/login"
-                android:onClick="@{() -> viewModel.onLoginClick()}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_password_error" />
-
-            <TextView
-                android:id="@+id/tv_create_account"
-                style="@style/TextLink"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/full_quarter_padding"
-                android:text="@string/create_account"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_login" />
-
-            <TextView
-                android:id="@+id/tv_forgot_password"
-                style="@style/TextLink"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/full_quarter_padding"
-                android:text="@string/forgot_password"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_login" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <include
-            layout="@layout/view_progress_bar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            bind:showProgress="@{viewModel.showLoading}" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</layout>
+        app:defaultNavHost="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/login_nav_graph" />
+</androidx.constraintlayout.widget.ConstraintLayout>
