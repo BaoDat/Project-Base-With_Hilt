@@ -118,7 +118,16 @@
                 android:text="@string/forgot_password"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+
+            <androidx.compose.ui.platform.ComposeView
+                android:id="@+id/greeting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_forgot_password"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
         <include
             layout="@layout/view_progress_bar"
