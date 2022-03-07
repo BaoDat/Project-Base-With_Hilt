@@ -1,4 +1,4 @@
-package com.datdang.projectbase.ui.login.navigation
+package com.datdang.projectbase.navigation
 
 import androidx.fragment.app.Fragment
 import com.datdang.projectbase.R
@@ -24,7 +24,7 @@ class LoginNavigatorImpl @Inject constructor(fragment: Fragment) : BaseNavigator
 //                fragment.activity?.finish()
             }
             is NavigationEvent.CreateAccount -> {
-//                findNavController()?.navigate(R.id.action_login_to_register)
+                findNavController()?.navigate(R.id.action_login_to_register)
             }
             is NavigationEvent.ForgotPassword -> {
 //                findNavController()?.navigate(R.id.action_login_to_forgot_password)

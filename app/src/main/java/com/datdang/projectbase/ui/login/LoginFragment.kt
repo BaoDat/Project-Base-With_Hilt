@@ -6,7 +6,7 @@ import com.datdang.projectbase.R
 import com.datdang.projectbase.base.BaseFragment
 import com.datdang.projectbase.databinding.FragmentLoginBinding
 import com.datdang.projectbase.extension.hideSoftKeyboard
-import com.datdang.projectbase.ui.login.navigation.LoginNavigator
+import com.datdang.projectbase.navigation.LoginNavigator
 import com.datdang.projectbase.ui.login.vm.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject

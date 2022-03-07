@@ -1,7 +1,7 @@
 package com.datdang.projectbase.di
 
-import com.datdang.projectbase.ui.login.navigation.LoginNavigator
-import com.datdang.projectbase.ui.login.navigation.LoginNavigatorImpl
+import com.datdang.projectbase.navigation.LoginNavigator
+import com.datdang.projectbase.navigation.LoginNavigatorImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
