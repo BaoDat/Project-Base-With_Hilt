@@ -6,7 +6,7 @@ import android.util.Patterns
 import androidx.lifecycle.MutableLiveData
 import com.datdang.projectbase.R
 import com.datdang.projectbase.base.BaseViewModel
-import com.datdang.projectbase.base.NavigationEvent
+import com.datdang.projectbase.navigation.event.LoginNavigationEvent
 import com.datdang.projectbase.domain.base.validation.ValidatableField
 import com.datdang.projectbase.domain.base.validation.ValidationProblem
 import com.datdang.projectbase.domain.exception.AppException
@@ -150,7 +150,7 @@ class RegisterViewModel @Inject constructor(
                 .subscribeBy(
                     onSuccess = {
                         showLoading.value = false
-                        _navigator.onNext(NavigationEvent.ConfirmCode(email.value.orEmpty()))
+                        _navigator.onNext(LoginNavigationEvent.ConfirmCode(email.value.orEmpty()))
                     },
                     onError = _error::onNext
                 )

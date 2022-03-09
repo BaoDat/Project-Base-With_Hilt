@@ -3,6 +3,8 @@ package com.datdang.projectbase.base
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.datdang.projectbase.navigation.event.ActivityNavigationEvent
+import com.datdang.projectbase.navigation.event.LoginNavigationEvent
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
@@ -15,7 +17,7 @@ import io.reactivex.rxjava3.subjects.PublishSubject
 abstract class BaseViewModel(app: Application) : AndroidViewModel(app) {
 
     protected val _error = BehaviorSubject.create<Throwable>()
-    protected val _navigator = PublishSubject.create<NavigationEvent>()
+    protected val _activityNavigator = PublishSubject.create<ActivityNavigationEvent>()
 
     private val disposables by lazy { CompositeDisposable() }
 
@@ -27,8 +29,8 @@ abstract class BaseViewModel(app: Application) : AndroidViewModel(app) {
     val error: Observable<Throwable>
         get() = _error
 
-    val navigator: Observable<NavigationEvent>
-        get() = _navigator
+    val activityNavigator: Observable<ActivityNavigationEvent>
+        get() = _activityNavigator
 
     val showLoading = MutableLiveData(false)
 

@@ -6,18 +6,18 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import timber.log.Timber
 
-interface BaseNavigator {
+interface BaseNavigator<T> {
 
     fun findNavController(): NavController?
 
-    fun navigate(event: NavigationEvent)
+    fun navigate(event: T)
 
     fun navigateUp()
 }
 
-abstract class BaseNavigatorImpl(
+abstract class BaseNavigatorImpl<T>(
     protected val fragment: Fragment
-) : BaseNavigator {
+) : BaseNavigator<T> {
 
     private var navController: NavController? = null
 
