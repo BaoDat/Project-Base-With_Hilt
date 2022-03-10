@@ -5,7 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.datdang.projectbase.R
 import com.datdang.projectbase.base.BaseViewModel
-import com.datdang.projectbase.navigation.event.LoginNavigationEvent
+import com.datdang.projectbase.navigation.activity.event.ActivityNavigationEvent
+import com.datdang.projectbase.navigation.fragment.event.LoginNavigationEvent
 import com.datdang.projectbase.utils.LiveEvent
 import com.datdang.projectbase.utils.Validator
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -87,5 +88,9 @@ class LoginViewModel @Inject constructor(
 
     fun onForgotPasswordClick() {
         navigationSubject.onNext(LoginNavigationEvent.ForgotPassword)
+    }
+
+    fun testNavigate(){
+        _activityNavigator.onNext(ActivityNavigationEvent.TestNavigate)
     }
 }

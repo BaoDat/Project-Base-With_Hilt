@@ -3,8 +3,7 @@ package com.datdang.projectbase.base
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.datdang.projectbase.navigation.event.ActivityNavigationEvent
-import com.datdang.projectbase.navigation.event.LoginNavigationEvent
+import com.datdang.projectbase.navigation.activity.event.ActivityNavigationEvent
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single

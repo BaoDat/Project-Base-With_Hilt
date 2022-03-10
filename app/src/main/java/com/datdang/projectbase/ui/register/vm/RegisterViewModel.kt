@@ -6,16 +6,18 @@ import android.util.Patterns
 import androidx.lifecycle.MutableLiveData
 import com.datdang.projectbase.R
 import com.datdang.projectbase.base.BaseViewModel
-import com.datdang.projectbase.navigation.event.LoginNavigationEvent
 import com.datdang.projectbase.domain.base.validation.ValidatableField
 import com.datdang.projectbase.domain.base.validation.ValidationProblem
 import com.datdang.projectbase.domain.exception.AppException
 import com.datdang.projectbase.domain.model.RegistrationForm
 import com.datdang.projectbase.domain.usecase.RegisterUseCase
 import com.datdang.projectbase.extension.setDefaultScheduler
+import com.datdang.projectbase.navigation.fragment.event.RegisterNavigationEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.kotlin.subscribeBy
+import io.reactivex.rxjava3.subjects.PublishSubject
 import javax.inject.Inject
 
 @HiltViewModel
@@ -27,6 +29,9 @@ class RegisterViewModel @Inject constructor(
     companion object {
         private const val PASSWORD_MIN_LENGTH = 6
     }
+
+    private val navigationSubject = PublishSubject.create<RegisterNavigationEvent>()
+    val navigator: Observable<RegisterNavigationEvent> = navigationSubject.hide()
 
     val email = MutableLiveData<String>()
     val username = MutableLiveData<String>()
@@ -150,7 +155,7 @@ class RegisterViewModel @Inject constructor(
                 .subscribeBy(
                     onSuccess = {
                         showLoading.value = false
-                        _navigator.onNext(LoginNavigationEvent.ConfirmCode(email.value.orEmpty()))
+                        navigationSubject.onNext(RegisterNavigationEvent.ConfirmCode(email.value.orEmpty()))
                     },
                     onError = _error::onNext
                 )

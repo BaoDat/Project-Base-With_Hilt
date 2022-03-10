@@ -7,7 +7,7 @@ import androidx.fragment.app.viewModels
 import com.datdang.projectbase.R
 import com.datdang.projectbase.base.BaseFragment
 import com.datdang.projectbase.databinding.FragmentRegisterBinding
-import com.datdang.projectbase.navigation.LoginNavigator
+import com.datdang.projectbase.navigation.fragment.RegisterNavigator
 import com.datdang.projectbase.ui.register.component.OnBirthdayClickListener
 import com.datdang.projectbase.ui.register.vm.RegisterViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,7 +22,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding, RegisterViewModel
     override val viewModel: RegisterViewModel by viewModels()
 
     @Inject
-    lateinit var navigator: LoginNavigator
+    lateinit var navigator: RegisterNavigator
 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)

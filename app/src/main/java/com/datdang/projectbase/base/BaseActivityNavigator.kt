@@ -1,7 +1,7 @@
 package com.datdang.projectbase.base
 
 import android.app.Activity
-import com.datdang.projectbase.navigation.event.ActivityNavigationEvent
+import com.datdang.projectbase.navigation.activity.event.ActivityNavigationEvent
 
 interface BaseActivityNavigator {
 
