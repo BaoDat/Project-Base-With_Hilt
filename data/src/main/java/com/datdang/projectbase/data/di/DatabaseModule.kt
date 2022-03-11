@@ -3,6 +3,7 @@ package com.datdang.projectbase.data.di
 import android.app.Application
 import androidx.room.Room
 import com.datdang.projectbase.data.local.BaseDatabase
+import com.datdang.projectbase.data.local.dao.UserDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,4 +22,7 @@ object DatabaseModule {
             .build()
     }
 
+    @Provides
+    @Singleton
+    fun provideUserDao(database: BaseDatabase): UserDao = database.userDao()
 }
